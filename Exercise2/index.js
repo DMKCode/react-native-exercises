@@ -1,15 +1,15 @@
 import React from 'react';
 import {
   Image,
-  SafeAreaView,
   StyleSheet,
   StatusBar,
-  Dimensions,
-  TextInput,
-  View,
-  Text,
-  TouchableHighlight,
+  Dimensions
 } from 'react-native';
+
+import Container from './components/Container';
+import { Button } from './components/Button';
+import { Header } from './components/Header';
+import { Input as TextInput } from './components/TextInput';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,13 +59,11 @@ const styles = StyleSheet.create({
 });
 
 const Challenge2 = () => (
-  <SafeAreaView style={styles.container}>
+  <Container styles={styles.container}>
     <StatusBar barStyle="light-content" />
-    <View style={styles.headerContainer}>
-      <Text style={styles.headerText}>Welcome to Gaze</Text>
-      <View style={styles.headerBorder} />
-    </View>
-
+    <Header styles={styles}>
+      Welcome to Gaze
+    </Header>
     <Image
       source={require('./assets/planet.png')}
       resizeMode="contain"
@@ -73,30 +71,24 @@ const Challenge2 = () => (
     />
     <TextInput
       placeholder="email"
-      style={styles.input}
-      placeholderTextColor="#6D6F7C"
-      autoCorrect={false}
-      autoCapitalize="none"
-      keyboardAppearance="dark"
+      styles={styles.input}
     />
     <TextInput
       placeholder="password"
       secureTextEntry
-      style={styles.input}
-      placeholderTextColor="#6D6F7C"
-      autoCorrect={false}
-      autoCapitalize="none"
-      keyboardAppearance="dark"
+      styles={styles.input}
     />
-    <TouchableHighlight
+    <Button
       onPress={() => null}
-      style={styles.touchable}
+      styles={{ 
+        touchable: styles.touchable,
+        button: styles.button,
+        text: styles.text
+      }}
     >
-      <View style={styles.button}>
-        <Text style={styles.text}>Sign in</Text>
-      </View>
-    </TouchableHighlight>
-  </SafeAreaView>
+      Sign in
+    </Button>
+  </Container>
 );
 
 export default Challenge2;
